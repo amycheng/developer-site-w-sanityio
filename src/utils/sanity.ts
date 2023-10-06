@@ -8,6 +8,11 @@ export async function getPosts(): Promise<Post[]> {
     groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`
   );
 }
+export async function getMiniPosts(): Promise<MiniPost[]> {
+  return await useSanityClient().fetch(
+    groq`*[_type == "miniPost" && defined(slug.current)] | order(_createdAt desc)`
+  );
+}
 
 export async function getPost(slug: string): Promise<Post> {
   return await useSanityClient().fetch(
@@ -25,5 +30,12 @@ export interface Post {
   slug: Slug;
   excerpt?: string;
   mainImage?: ImageAsset;
+  body: PortableTextBlock[];
+}
+
+export interface MiniPost {
+  _type: "miniPost";
+  _createdAt: string;
+  slug: Slug;
   body: PortableTextBlock[];
 }

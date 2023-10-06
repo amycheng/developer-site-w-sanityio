@@ -28,9 +28,7 @@ const post = await getPost(slug);
           src={urlFor(post.mainImage).url()}
           alt="Cover image"
         />
-      ) : (
-        <div class="post__cover--none" />
-      )
+      ) : null
     }
     <div class="post__container">
       <h1 class="post__title">{post.title}</h1>

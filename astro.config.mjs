@@ -1,12 +1,6 @@
 // Loading environment variables from .env files
 // https://docs.astro.build/en/guides/configuring-astro/#environment-variables
-import { loadEnv } from "vite";
 import { defineConfig } from "astro/config";
-
-// Different environments use different variables
-const projectId = 'jntbxtyy';
-const dataset = 'production'
-
 import sanity from "@sanity/astro";
 import react from "@astrojs/react";
 
@@ -20,8 +14,8 @@ export default defineConfig({
   output: "hybrid",
   adapter: vercel(),
   integrations: [sanity({
-    projectId,
-    dataset,
+    projectId: 'jntbxtyy',
+    dataset: 'production',
     studioBasePath: "/admin",
     useCdn: false,
     // `false` if you want to ensure fresh data
